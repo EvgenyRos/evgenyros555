@@ -1,0 +1,238 @@
+/* Reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Parallax container */
+.parallax-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Layers for parallax effect */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensures layers don't interfere with mouse events */
+}
+
+.background {
+    background-image: url('1113611.jpg'); /* Замените на путь к вашему изображению */
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-2px) scale(3); /* Дальний фон */
+    z-index: 1;
+}
+
+.middle {
+    background-color: rgba(255, 255, 255, 0); /* Полупрозрачный слой, если нужно */
+    transform: translateZ(0px); /* Средний слой */
+    z-index: 2;
+}
+
+.foreground {
+    background-color: rgba(255, 255, 255, 0); /* Передний слой */
+    transform: translateZ(1px) scale(0.9); /* Ближайший фон */
+    z-index: 3;
+}
+
+.text-layer {
+    z-index: 4; /* Вище за інші шари */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+.text-content {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Добавим анимацию для лучшего эффекта */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.text-container {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.raindrop {
+    position: absolute;
+    width: 5px;
+    height: 15px;
+    background-color: rgba(0, 150, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall 1s linear;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+.rain-video {
+    z-index: 2; /* Відповідно до вашого порядку шарів */
+}
+
+#rainVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none; /* Щоб відео не блокувало курсор */
+}
+.image-layer {
+    z-index: 3; /* Розташовується між іншими шарами */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Забезпечує взаємодію з іншими елементами */
+}
+
+.parallax-image {
+    width: 100%; /* Налаштуйте розмір фото за потребою */
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px; /* Додатковий стиль, якщо потрібен */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5); /* Ефект об’ємності */
+}
+    .text-content h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 0 5px #ffdd00, 0 0 10px #ffdd00, 0 0 20px #ffdd00, 0 0 30px rgba(255, 221, 0, 0.8);
+        animation: glowing 10s infinite alternate;
+    }
+    
+    /* Анімація для ефекту пульсації */
+    @keyframes glowing {
+        from {
+            text-shadow: 0 0 5px #ffdd00, 0 0 10px #ffdd00, 0 0 20px #ffdd00, 0 0 30px rgba(255, 221, 0, 0.8);
+        }
+        to {
+            text-shadow: 0 0 10px #fff, 0 0 20px #ffdd00, 0 0 30px #ffdd00, 0 0 40px rgba(255, 221, 0, 1);
+        }
+    }
+        .photo-layer {
+            z-index: 4; /* Визначте порядок відображення (між іншими шарами) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; /* Забороняє взаємодію з шаром */
+        }
+        
+        .parallax-photo {
+            width: 100%; /* Налаштуйте розмір фото */
+            height: auto;
+            object-fit: cover;
+            border-radius: 40px; /* Опціонально: згладжені кути */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 10); /* Тінь для об’ємності */
+        }
+        .button-layer {
+            z-index: 5; /* Вищий шар */
+            display: flex;
+            justify-content: center; /* Центруємо кнопку по горизонталі */
+            align-items: flex-end; /* Розташування внизу */
+            pointer-events: none; /* Забороняє взаємодію з шаром */
+            position: absolute;
+            bottom: 35%; /* Зміщення на 15% від нижнього краю */
+            width: 100%; /* Ширина контейнера */
+            height: auto;
+        }
+        
+        .glowing-button {
+            background: rgba(0, 0, 255, 0.1); /* Прозорий фон з легким відтінком */
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 2px solid rgba(0, 191, 255, 0.8); /* Блакитний контур */
+            border-radius: 20px; /* Закруглені краї */
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none; /* Видалення підкреслення */
+            cursor: pointer;
+            pointer-events: auto; /* Увімкнення клікабельності */
+            text-shadow: 0 0 5px rgba(0, 191, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.8), 0 0 20px rgba(0, 191, 255, 0.5);
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+        
+        .glowing-button:hover {
+            box-shadow: 0 0 15px rgba(0, 191, 255, 1), 0 0 30px rgba(0, 191, 255, 0.7);
+            transform: scale(1.1); /* Легке збільшення при наведенні */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .parallax-layer {
+            opacity: 1; /* По умолчанию полностью видимы */
+        }
+        @media (max-width: 768px) {
+            .text-content h1 {
+                font-size: 2rem; /* Зменшення розміру тексту */
+            }
+            .parallax-image, .parallax-photo {
+                width: 90%; /* Зменшення ширини зображень */
+            }
+            .glowing-button {
+                font-size: 1rem; /* Зменшення тексту кнопки */
+                padding: 8px 16px;
+            }
+        }
+        body, html {
+            overflow-x: hidden;
+        }
+        .glowing-button {
+            min-width: 150px;
+            min-height: 48px;
+        }
+        .parallax-container {
+            width: 100%; /* Розтягнення на весь екран */
+            height: 100vh; /* 100% висоти екрана */
+        }
+        @media (max-width: 768px) {
+            .parallax-layer {
+                transform: none; /* Знімає 3D-трансформацію для слабших пристроїв */
+            }
+            .background {
+                transform: translateZ(-1px) scale(1.5); /* Полегшений паралакс */
+            }
+            .text-content h1 {
+                font-size: 2rem;
+            }
+        }        
+                                
+
